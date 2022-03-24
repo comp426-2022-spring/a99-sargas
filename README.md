@@ -1,6 +1,6 @@
 # a99 Final Project
 
-## UPDATE
+## Mental Health Tracking App
 
 You don't need to accept this assignment since you are already assigned to teams. So, there is not assignment invite link for a99.
 
@@ -8,7 +8,9 @@ You don't need to accept this assignment since you are already assigned to teams
 
 COMP426 final project template repository.
 All your code and documentation goes here.
-Change this text to be a brief description of your final project.
+
+We will be creating an app that will allow for user to log in and track their mental health data. They can do this daily and see a monthly view of ones emotions and feelings over time. This app will also be able to provide information about mental health that could be helpful to the users. 
+
 Put the name of your project in the header above.
 You will change everything below to be the main technical documentation, as outlined below.
 
@@ -35,7 +37,7 @@ Try to figure out what each of you are good at/enjoy doing and try to work out r
 
 Some basic roles you will want to consider:
 
-1. A review manager - someone to review pull requests and merge or reject them and manage the related discussions
+1. A review manager - someone to review pull requests and merge or reject them and manage the related discussions 
 2. A plan manager - someone to keep an eye on the overall plan and keep the project tab/to-do list up to date
 3. A documentation manager - someone to keep the documentation in order and identify what is missing and needs to be documented
 4. A release manager - someone to manage the packaging and release process for your prototype package
@@ -49,6 +51,11 @@ Some basic roles you will want to consider:
 
 You will notice that there are more roles than people in your group.
 That is because you will all be doing a hybrid job of managing a thing while working on other things.
+
+Janet Mbugua--- Review Manager, backend 
+Meghana Vattigunta --- Documentation, front end
+Sadye Franklin --- Plan Manager, Project manager, design/front end 
+Albert --- FIGURE YO STUFF OUT
 
 ## Check in with instructional staff
 
