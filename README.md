@@ -53,9 +53,9 @@ You will notice that there are more roles than people in your group.
 That is because you will all be doing a hybrid job of managing a thing while working on other things.
 
 Janet Mbugua--- Review Manager, backend 
-Meghana Vattigunta --- Documentation, front end
+Meghana Vattigunta --- Front End Documentation, front end
 Sadye Franklin --- Plan Manager, Project manager, design/front end 
-Albert --- FIGURE YO STUFF OUT
+Albert --- Back End Documenation, Release Manager, Back End Dev
 
 ## Check in with instructional staff
 
