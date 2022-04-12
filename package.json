@@ -1,0 +1,19 @@
+{
+  "name": "mental_health_tracker",
+  "version": "1.0.0",
+  "description": "Mood-Panda-Inspired mental health tracker website!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-spring/a99-sargas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-spring/a99-sargas/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-spring/a99-sargas#readme"
+}
