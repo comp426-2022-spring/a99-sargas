@@ -31,6 +31,25 @@ app.get('/app/', (req, res) => {
         res.end(res.statusCode+ ' ' + res.statusMessage)
 });
 
+app.get('/app/moreInfo', (req, res) => {
+    //Respond w status 200
+    res.statusCode = 200;
+    //Respond w status message "OK"
+    res.statusMessage = 'OK';
+    res.writeHead( res.statusCode, {
+        'Content-Type' : 'text/plain' });
+        res.end(res.statusCode+ ' ' + res.statusMessage)
+});
+
+app.get('/app/login', (req, res) => {
+    //Respond w status 200
+    res.statusCode = 200;
+    //Respond w status message "OK"
+    res.statusMessage = 'OK';
+    res.writeHead( res.statusCode, {
+        'Content-Type' : 'text/plain' });
+        res.end(res.statusCode+ ' ' + res.statusMessage)
+});
 
 app.use(function(req, res) {
     res.type("text/plain")
