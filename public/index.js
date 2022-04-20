@@ -31,6 +31,7 @@ app.get('/app/', (req, res) => {
         res.end(res.statusCode+ ' ' + res.statusMessage)
 });
 
+
 app.use(function(req, res) {
     res.type("text/plain")
     res.status(404).send("Endpoint does not exist")
