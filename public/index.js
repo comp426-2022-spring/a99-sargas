@@ -57,3 +57,14 @@ app.use(function(req, res) {
   
 
 })
+
+app.post("/app/feeling", (req, res, next) => {
+    let data = {
+        user: req.body.username,
+        pass: new Date().toLocaleDateString()
+    }
+    const stmt = db.prepare('INSERT INTO feelinginfo (feeling, date) VALUES (?, ?)')
+    const info = stmt.run(data.user, data.pass)
+    res.status(200).json(info)
+});
+
