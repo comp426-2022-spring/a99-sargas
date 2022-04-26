@@ -58,12 +58,14 @@ app.use(function(req, res) {
 
 })
 
-app.post("/app/feeling", (req, res, next) => {
+app.post("/app/feeling/:user", (req, res, next) => {
     let data = {
         user: req.body.username,
         pass: new Date()
     }
-    const stmt = db.prepare('INSERT INTO feelinginfo (feeling, date) VALUES (?, ?)')
+    //need to get user from  other parts
+
+    const stmt = db.prepare('INSERT INTO feelinginfo (username, feeling, date) VALUES (?, ?)')
     const info = stmt.run(data.user, data.pass)
     res.status(200).json(info)
 });
