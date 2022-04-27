@@ -1,0 +1,141 @@
+main {
+    padding: 25px;
+    padding-top: 0;
+}
+
+footer {
+    background-color: #fbdbd4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+/*Fonts*/
+
+h1,
+h2 {
+    font-family: 'Yeseva One', cursive;
+    font-size: 2rem;
+    margin: 10px;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+}
+
+h3,
+h4,
+h5,
+h5 {
+    font-family: 'Raleway', sans-serif;
+}
+
+p {
+    font-size: 1rem;
+    text-align: left;
+    margin: 10px;
+}
+
+
+/*Nav*/
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.menuitem {
+    background: #99DAff;
+    width: auto;
+    padding: 15px 15px;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.active_menuitem {
+    background: #38b6ff;
+    width: auto;
+    padding: 15px 15px;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.menulink {
+    color: black;
+    text-decoration: none;
+}
+
+.menuitem:hover,
+.menuitem:focus {
+    background: #38b6ff;
+    transition: 600ms;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 8px;
+}
+
+
+/*Header*/
+
+.header-container {
+    background-color: #fbdbd4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 25px;
+}
+
+header img {
+    height: 50px;
+    width: 50px;
+}
+
+.break-line {
+    background-color: #fbdbd4;
+    margin-top: 20px;
+    height: .3rem;
+}
+
+.directions-div {
+    grid-area: directions;
+    padding: .5rem;
+}
+
+.adapted-div {
+    grid-area: adapted;
+    padding: .5rem;
+}
+
+.large-box {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding: 10px;
+}

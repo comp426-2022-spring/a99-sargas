@@ -1,0 +1,220 @@
+    main {
+        padding: 25px;
+        padding-top: 0;
+    }
+    
+    footer {
+        background-color: #fbdbd4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: 100%;
+        padding: 20px;
+        margin-top: 50px;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Raleway', sans-serif;
+    }
+    /*Fonts*/
+    
+    h1 {
+        font-family: 'Yeseva One', cursive;
+        font-size: 2rem;
+        margin: 10px;
+        font-weight: bold;
+        color: black;
+        text-transform: uppercase;
+    }
+    
+    h2 {
+        font-family: 'Yeseva One', cursive;
+        font-size: 1.5rem;
+        color: black;
+        text-align: left;
+        margin: 10px;
+    }
+    
+    h3,
+    h4,
+    h5,
+    h5 {
+        font-family: 'Raleway', sans-serif;
+    }
+    
+    p {
+        font-size: 1rem;
+        text-align: left;
+        margin: 10px;
+    }
+    /*Nav*/
+    
+    .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    .menuitem {
+        background: #99DAff;
+        width: auto;
+        padding: 15px 15px;
+        border-radius: 10px;
+        margin: 10px;
+        text-align: center;
+    }
+    
+    .active_menuitem {
+        background: #38b6ff;
+        width: auto;
+        padding: 15px 15px;
+        border-radius: 10px;
+        margin: 10px;
+        text-align: center;
+    }
+    
+    .menulink {
+        color: black;
+        text-decoration: none;
+    }
+    
+    .menuitem:hover,
+    .menuitem:focus {
+        background: #38b6ff;
+        transition: 600ms;
+    }
+    
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    nav ul li {
+        display: inline-block;
+        padding: 8px;
+    }
+    /*Header*/
+    
+    .header-container {
+        background-color: #fbdbd4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        padding: 25px;
+    }
+    
+    header img {
+        height: 50px;
+        width: 50px;
+    }
+    /*Home Hero*/
+    
+    .hero {
+        width: 100%;
+        height: 30vh;
+        background-image: url('https://images.unsplash.com/photo-1597733153203-a54d0fbc47de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1580&q=80');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .hero-text {
+        width: fit-content;
+        margin: 3rem;
+        background-color: white;
+    }
+    
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+    
+    form {
+        width: 70%;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background: #99DAff;
+        border-radius: 8px;
+    }
+    
+    form h1 {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    select {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #4d5a6b;
+        font-size: 16px;
+        height: auto;
+        margin: 0%;
+        outline: 0;
+        padding: 10px;
+        width: 100%;
+        background-color: white;
+        color: black;
+        margin-bottom: 15px;
+        transition: background 350ms;
+    }
+    
+    input[type="text"]:hover,
+    input[type="text"]:focus,
+    input[type="email"]:hover,
+    input[type="email"]:focus,
+    select:hover,
+    select:focus {
+        box-shadow: 0px 0px 2px 2px rgba(20, 68, 95, 0.7);
+    }
+    
+    button {
+        background: #fbdbd4;
+        padding: 19px 39px 18px 39px;
+        color: black;
+        margin: 0 auto;
+        font-size: 18px;
+        text-align: center;
+        font-style: normal;
+        background-size: 200%;
+        border-radius: 0.5rem;
+        border: none;
+        height: 70px;
+        width: 400px;
+        background-position: 0% 0%;
+        width: 100%;
+        margin-bottom: 10px;
+        transition: background-position 1s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    button:hover,
+    button:focus {
+        background-position: 100% 100%;
+        color: black;
+    }
+    
+    fieldset {
+        margin-bottom: 10px;
+        border: none;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+    
+    label.light {
+        font-weight: 300;
+        display: inline;
+    }
