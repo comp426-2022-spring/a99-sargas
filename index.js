@@ -5,9 +5,10 @@ const morgan = require('morgan')
 const database = require('./database/user.js')
 const fs = require('fs')
 const md5 = require('md5')
+const http = require("http")
 
 // Serve static HTML files
-app.use(express.static('./pages'));
+app.use(express.static('./public'));
 
 // Add cors dependency
 const cors = require('cors')
