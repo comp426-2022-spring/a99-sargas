@@ -2,12 +2,12 @@ const express = require('express')
 const app = express()
 const args = require('minimist')(process.argv.slice(2)) 
 const morgan = require('morgan')
-const database = require('./src/services/database.js')
+const database = require('./database/user.js')
 const fs = require('fs')
 const md5 = require('md5')
 
 // Serve static HTML files
-app.use(express.static('./public'));
+app.use(express.static('./pages'));
 
 // Add cors dependency
 const cors = require('cors')
@@ -16,6 +16,13 @@ app.use(cors())
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+var port = args["por"]
+// Make this const default to port 3000 if there is no argument given for `--port`.
+if (port == null){
+  port = 5000
+}
+console.log(port)
 
 const server = app.listen(port, () => {
     console.log('App is running on port %PORT%'.replace('%PORT%',port))
