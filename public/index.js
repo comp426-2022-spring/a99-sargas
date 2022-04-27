@@ -65,7 +65,7 @@ app.post("/app/feeling/:user", (req, res, next) => {
     }
     //need to get user from  other parts
 
-    const stmt = db.prepare('INSERT INTO feelinginfo (username, feeling, date) VALUES (?, ?)')
+    const stmt = db.prepare('INSERT INTO feelinginfo (username, feeling, date) VALUES (?, ?,?)')
     const info = stmt.run(data.user, data.pass)
     res.status(200).json(info)
 });
