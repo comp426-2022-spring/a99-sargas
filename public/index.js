@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const args = require('minimist')(process.argv.slice(2)) 
 const morgan = require('morgan')
-const database = require('./src/services/database.js')
+const users = require('./public/database/user.js')
+const feels = require('./public/database/feeling.js')
 const fs = require('fs')
 const md5 = require('md5')
 
@@ -61,18 +62,19 @@ app.use(function(req, res) {
 app.post("/app/feeling/:user", (req, res, next) => {
     let data = {
         user: req.body.username,
-        pass: new Date()
+        feeling: req.body.feeling,
+        date: new Date()
     }
     //need to get user from  other parts
 
     const stmt = db.prepare('INSERT INTO feelinginfo (username, feeling, date) VALUES (?, ?,?)')
-    const info = stmt.run(data.user, data.pass)
+    const info = stmt.run(data.user, data.feeling, data.date)
     res.status(200).json(info)
 });
 
-app.get("/app/graph/:id", (req, res) => {
+app.get("/app/graph/:user", (req, res) => {
     try {
-        const stmt = db.prepare('SELECT * FROM userinfo WHERE id = ?').get(req.params.id);
+        const stmt = db.prepare('SELECT * FROM userinfo WHERE id = ?').get(req.params.user);
         res.status(200).json(stmt)
     } catch (e) {
         console.error(e)
