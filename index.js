@@ -18,7 +18,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var port = args["por"]
+var port = args["port"]
 // Make this const default to port 3000 if there is no argument given for `--port`.
 if (port == null){
   port = 5000
@@ -51,10 +51,11 @@ app.get('/app/moreInfo', (req, res) => {
 
 app.get("/app/delete", (req, res)=>{ // NOT READY
     res.statusCode = 200
-    var userName = "dummy"
-    var password = "dumdum"
-    const stmt = db.prepare("SELECT * FROM userinfo")
-    const info = stmt.run("dummy")
+    let data = {
+        user: req.body.username,
+    } 
+    const stmt = db.prepare("DELETE FROM userinfo where username = ?")
+    const info = stmt.run("data.user")
     res.status(200).json(info)
 
  //   "SELECT * FROM mobile_sales WHERE unit_sale >= ?"
@@ -63,15 +64,17 @@ app.get("/app/delete", (req, res)=>{ // NOT READY
 app.get('/app/register', (req, res)=>{
     res.statusCode = 200
     //var userName = req.body.username // have to attach this to a form
-    var userName = "kalsd"
-    var password = "lkads"
+    let data = {
+        user: req.body.username,
+        password:req.body.password
+    } 
     //var password = req.body.password // have to attach this to a form
     const stmt = db.prepare(`INSERT INTO userinfo (
         username,
         password
     ) VALUES (?, ?)
       `)
-    const info = stmt.run(userName , password) // Gotta figure out how to get them
+    const info = stmt.run(data.username , data.password) // Gotta figure out how to get them
     console.log("something registered!")
 
     
@@ -80,26 +83,31 @@ app.get('/app/register', (req, res)=>{
 app.post('/app/login', (req, res) => {
     //Respond w status 200
     var isUserNamePresent = false
-    var user = req.body // have to attach this to a form
-    var password = req.body // have to attach this to a form
-    console.log(user)
-    console.log(password)
+    let data = {
+        user: req.body.username,
+        password:req.body.password
+    } 
+   let i = -1;
+    console.log(data.user)
+    console.log(data.password)
     res.statusCode = 200;
     var login = false
     var stmt = db.prepare("SELECT * FROM userinfo").all()
     for (x in stmt){
         if (stmt[x]["username"] == user){ // the magical way to access the username... This took me an hour, lol - Albert
             isUserNamePresent = true
+            i = x;
         }
     }
     if(isUserNamePresent){
-        for (x in stmt){
-            if (stmt[x]["password"] == password){
-                login = true
-            }else{
-                
-            }
+        if (stmt[i]["password"] == password){
+            login = true
+        }else{
+            res.status(200).json("Incorrect Password")
+            console.log("Incorrect Password")
         }
+            
+        
     }else{
         res.status(200).json("Username is not recognized")
         console.log("Username not recognized")
@@ -107,9 +115,6 @@ app.post('/app/login', (req, res) => {
     if(login){
         res.status(200).json("LOGIN")
         console.log("LOGIN")
-    }else{
-        res.status(200).json("Incorrect Password")
-        console.log("Incorrect Password")
     }
 });
 
