@@ -84,23 +84,23 @@ app.post('/app/login', (req, res) => {
     //Respond w status 200
     var isUserNamePresent = false
     let data = {
-        user: req.body.username,
+        username: req.body.username,
         password:req.body.password
     } 
    let i = -1;
-    console.log(data.user)
+    console.log(data.username)
     console.log(data.password)
     res.statusCode = 200;
     var login = false
     var stmt = db.prepare("SELECT * FROM userinfo").all()
     for (x in stmt){
-        if (stmt[x]["username"] == user){ // the magical way to access the username... This took me an hour, lol - Albert
+        if (stmt[x]["username"] == data.username){ // the magical way to access the username... This took me an hour, lol - Albert
             isUserNamePresent = true
             i = x;
         }
     }
     if(isUserNamePresent){
-        if (stmt[i]["password"] == password){
+        if (stmt[i]["password"] == data.password){
             login = true
         }else{
             res.status(200).json("Incorrect Password")
