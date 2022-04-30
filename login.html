@@ -24,7 +24,7 @@
             <nav>
                 <div class='flex-container'>
                     <ul class='menubar'>
-                        <li class='active_menuitem'>
+                        <li class='menuitem'>
                             <a class='menulink' href="index.html">Home</a>
                         </li>
                         <li class='menuitem'>
@@ -36,8 +36,8 @@
                         <li class='menuitem'>
                             <a class='menulink' href="contact.html">Contact Us!</a>
                         </li>
-                        <li class='menuitem'>
-                            <a class='menulink' href="login.html">Login</a>
+                        <li class='active_menuitem'>
+                            <a class='menulink' href="login.html">Contact Us!</a>
                         </li>
                     </ul>
                 </div>
@@ -46,22 +46,26 @@
             <section>
                 <div class="hero">
                     <div class="hero-text">
-                        <h2>Welcome</h2>
+                        <h2>Login</h2>
                     </div>
                 </div>
             </section>
             <section>
                 <div class="feature-container">
                     <div class='left'>
-                        <h2 class="feature-title">Our Story</h2>
+                        <h2 class="feature-title">Login</h2>
                         <div class="featureitem">
-                            <p>
-                                During the 2020-2021 school year, most, if not all of us spent our time in school, at home, protecting ourselves from the spread of the virus that had, and even now, plagues our college experience. In the midst of all this, one thing that many of us come
-                                to notice, is the unintentional neglect of our own mental health, Spending all this time tending to our bodies to ensure we didn't catch the virus, or just recovering from the virus, inconsequently led us to the fraying
-                                of our own psychological well being. While some people may have come out of quarantine with a new trick or two, some of us developed new anxieties we hadn’t had prior. In efforts to rectify this way of living, this team
-                                has created a mental health check-up website, that allows its user to journal their emotional state as well as symptoms they are experiencing for that particular day of the week. This forces the user to keep track and be
-                                aware of their psychological well-being while receiving the proper resources and advice for them to utilize and tend to their mental health.
-                            </p>
+                            <form>
+                                <form action="//members.osiolabs.com/login" method="post">
+                                    <!-- user input-->
+                                    Username:<br>
+                                    <input type="text" name="username" placeholder="Username" required><br><br>
+                                    Password:<br>
+                                    <input type="password" name="password" placeholder="Password" required><br><br>
+                                    <!-- submit button -->
+                                    <input type="submit" value="login">
+                                  </form>
+                            </form>
                         </div>
                     </div>
                     <div class='right'>
@@ -71,7 +75,7 @@
                 </div>
             </section>
             <footer>
-                <p>Home Page</p>
+                <p>Login</p>
             </footer>
         </div>
     </div>

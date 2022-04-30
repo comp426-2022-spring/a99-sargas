@@ -7,7 +7,9 @@ const db = new Database('user.db');
 
 // Is the database initialized or do we need to initialize it?
 const stmt = db.prepare(`
-    SELECT name FROM sqlite_master WHERE type='table' and name='userinfo';`
+    SELECT name FROM sqlite_master WHERE type='table' and name='userinfo';
+    SELECT name FROm sqlite_mater WHERE type`
+    
     );
 // Define row using `get()` from better-sqlite3
 let row = stmt.get();
