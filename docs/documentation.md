@@ -1,17 +1,24 @@
-# Wellness.net
+# Mental Health Wellness.net
 
-This is a quick rundown for  exposes endpoints and provides a web interface to emulate random chance coin flip events in the following ways:
+The purpose of this website is to create a digitized journal to record the emotional state of each of its users for the sake of monitoring the mental wellness of each individual. 
 
-1. Flip one coin - returns result of a coin flip
-2. Flip many coins - returns the results of many coin flips with a summary
-3. Guess a coin flip and - returns the result of a flip and guess match
+Each page hosts different facets of this website:
 
-# Wellness Website Installation
+[LOGIN] - Allows user to log in to their individual account, where all of their associated data (i.e. login information, journal log entries, email, etc.) can be associated according to each user account.
+
+[RESOURCES] - A page linking to PDFs outlining tutorials how to take care of you or someone else struggling in their mental health. As well as additional links directing you to extra resources to outreach when self help solutions are not as viable.
+
+[INDEX] - Our origin story to how the pandemic affect the general mental health of the population, and how we came choose this path of topic to present our website on. Contains our mission statement and 
+
+[CONTACTUS] - Our different social media pages you can further inquire the developers of this website on any other existent questions.
+
+
+# Mental Health Wellness Website Installation
 
 This package was buid using Node.js LTS (16.x).
 Other package dependency and version information can be found in `package.json`.
 
-# Coinserver Runtime Documentation
+# Mental Health Wellness.net Documentation
 ```
 node server.js [options]
 
@@ -29,7 +36,7 @@ node server.js [options]
 --help, -h	Return this message and exit.
 ```
 
-# Coinserver API Documentation
+# Mental Health Wellness API Documentation
 
 ## Endpoints
 
@@ -44,7 +51,7 @@ curl http://localhost:5000/app/
 #### Response body
 
 ```
-{"message":"Your API works! (200)"}
+{"message":"App is running on port (5000)"}
 ```
 
 #### Response headers
@@ -55,7 +62,7 @@ X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
 Content-Length: 35
 ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Date: Thu, 30 Apr 2022 15:42:49 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```

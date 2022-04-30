@@ -218,3 +218,9 @@
         font-weight: 300;
         display: inline;
     }
+    
+    .list {
+        background: #cce5ff;
+        color: darkblue;
+        margin: 5px;
+    }
