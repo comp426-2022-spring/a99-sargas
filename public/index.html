@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Mental Health</title>
+    <title id="titleID">Mental Health</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,7 +69,6 @@
             </footer>
         </div>
     </div>
-    <body>
         <div class="grid-container">
             <div class="item1">
     
@@ -93,18 +92,17 @@
                         <div class='left'>
                             <h2 class="feature-title">Login</h2>
                             <div class="featureitem">
-                                <form>
-                                    <form action="/app/login" method="post">
+                                    <form id="loginForm">
                                         <!-- user input-->
                                         Username:<br>
-                                        <input type="text" name="username" placeholder="Username" required><br><br>
+                                        <input id="username" type="text" name="username" placeholder="Username" required><br><br>
                                         Password:<br>
-                                        <input type="password" name="password" placeholder="Password" required><br><br>
+                                        <input id="password" type="password" name="password" placeholder="Password" required><br><br>
                                         <!-- submit button -->
-                                        <input type="submit" value="login">
+                                        <input type="submit" value="Submit">
                                       </form>
-                                </form>
                             </div>
+                            <p id="loginStatusCheck"></p>
                         </div>
                     </div>
                 </section>
@@ -113,7 +111,7 @@
                 </footer>
             </div>
         </div>
-    </body>
+        <script src="./main.js"></script>
 </body>
 
 </html>

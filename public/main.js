@@ -10,8 +10,10 @@ async function loginHandler(event) {
     console.log(formEvent)
    // try{
         const formData = new FormData(formEvent);
+        console.log(formData)
         const loginResult = await sendLogin({formData, url})
         console.log(loginResult)
+        document.getElementById("loginStatusCheck").innerHTML=loginResult
   //  }catch(e){
   //      console.error("oof")
   //  }

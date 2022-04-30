@@ -18,11 +18,8 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var port = args["port"]
+var port = 5555
 // Make this const default to port 3000 if there is no argument given for `--port`.
-if (port == null){
-  port = 5000
-}
 console.log(port)
 
 const server = app.listen(port, () => {
@@ -103,17 +100,21 @@ app.post('/app/login', (req, res) => {
         if (stmt[i]["password"] == data.password){
             login = true
         }else{
-            res.status(200).json("Incorrect Password")
+            res.status(200).json("incorrectPassword")
+         //   res.status(200).json("Incorrect Password")
             console.log("Incorrect Password")
         }
             
         
     }else{
-        res.status(200).json("Username is not recognized")
+        res.status(200).json("badUsername")
+  //      res.json({"message": "usernameNotRecognized"})
+      //  res.status(200).json("Username is not recognized")
         console.log("Username not recognized")
     }
     if(login){
         res.status(200).json("LOGIN")
+      //  res.status(200).json("LOGIN")
         console.log("LOGIN")
     }
 });
