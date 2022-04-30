@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const args = require('minimist')(process.argv.slice(2)) 
 const morgan = require('morgan')
-const database = require('./database/user.js')
+const db = require('./database/user.js')
 const fs = require('fs')
 const md5 = require('md5')
 const http = require("http")
@@ -49,22 +49,62 @@ app.get('/app/moreInfo', (req, res) => {
         res.end(res.statusCode+ ' ' + res.statusMessage)
 });
 
+app.get("/app/delete", (req, res)=>{ // NOT READY
+    res.statusCode = 200
+    var userName = "dummy"
+    var password = "dumdum"
+    const stmt = db.prepare("SELECT * FROM userinfo")
+    const info = stmt.run("dummy")
+    res.status(200).json(info)
+
+ //   "SELECT * FROM mobile_sales WHERE unit_sale >= ?"
+})
+
+app.get('/app/register', (req, res)=>{
+    res.statusCode = 200
+    var userName = "dummy" // have to attach this to a form
+    var password = "dumdum" // have to attach this to a form
+    const stmt = db.prepare(`INSERT INTO userinfo (
+        username,
+        password
+    ) VALUES (?, ?)
+      `)
+    const info = stmt.run(userName , password) // Gotta figure out how to get them
+
+    
+})
+
 app.get('/app/login', (req, res) => {
     //Respond w status 200
+    var isUserNamePresent = false
+    var user = "dummyk" // have to attach this to a form
+    var password = "dumdum" // have to attach this to a form
     res.statusCode = 200;
-    //Respond w status message "OK"
-    res.statusMessage = 'OK';
-    res.writeHead( res.statusCode, {
-        'Content-Type' : 'text/plain' });
-        res.end(res.statusCode+ ' ' + res.statusMessage)
+    var login = false
+    var stmt = db.prepare("SELECT * FROM userinfo").all()
+    for (x in stmt){
+        if (stmt[x]["username"] == user){ // the magical way to access the username... This took me an hour, lol - Albert
+            isUserNamePresent = true
+        }
+    }
+    if(isUserNamePresent){
+        for (x in stmt){
+            if (stmt[x]["password"] == password){
+                login = true
+            }else{
+                
+            }
+        }
+    }else{
+        res.status(200).json("Username is not recognized")
+    }
+    if(login){
+        res.status(200).json("LOGIN")
+    }else{
+        res.status(200).json("Incorrect Password")
+    }
 });
 
-app.use(function(req, res) {
-    res.type("text/plain")
-    res.status(404).send("Endpoint does not exist")
-  
-
-})
 
 app.post("/app/feeling/:user", (req, res, next) => {
     let data = {
@@ -87,3 +127,10 @@ app.get("/app/graph/:id", (req, res) => {
     }
 
 });
+
+app.use(function(req, res) {
+    res.type("text/plain")
+    res.status(404).send("Endpoint does not exist")
+  
+
+})

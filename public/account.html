@@ -39,30 +39,39 @@
                     </ul>
                 </div>
             </nav>
-            <h2>Account Information</h2>
+            <h2>Login Here!!!</h2>
+            <div>
+                <body>
+                    <form id = "loginForm" method="post">
+                      <!-- user input-->
+                      Username:<br>
+                      <input type="username" id="usernameLogin" placeholder="Username" value=><br><br>
+                      Password:<br>
+                      <input type="password" id="passwordLogin" placeholder="Password" value=><br><br>
+                      <!-- submit button -->
+                      <input type="submit" value="login">
+                    </form>
+                  </body>
+            
+            </div>
             <section class='large-box'>
             </section>
             <footer>
-                <p>Account Info</p>
+                <p>Don't have an account? Register below!</p>
             </footer>
+            <form id = "registerForm" method="post">
+                <!-- user input-->
+                Username:<br>
+                <input type="text" id="username" placeholder="UsernameRegister" required><br><br>
+                Password:<br>
+                <input type="password" id="passwordRegister" placeholder="Password" required><br><br>
+                <!-- submit button -->
+                <input type="submit" value="login">
+              </form>
         </div>
     </div>
 <script src="main.js"></script>
 </body>
 
-<div id="loginForm">
-    <body>
-        <form method="post">
-          <!-- user input-->
-          Username:<br>
-          <input type="text" name="username" placeholder="Username" required><br><br>
-          Password:<br>
-          <input type="password" name="password" placeholder="Password" required><br><br>
-          <!-- submit button -->
-          <input type="submit" value="login">
-        </form>
-      </body>
-
-</div>
 
 </html>
