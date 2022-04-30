@@ -113,14 +113,14 @@ app.post('/app/login', (req, res) => {
         console.log("Username not recognized")
     }
     if(login){
-        res.status(200).json("LOGIN")
+        res.status(200).json({"status": "LOGIN", "user":data.username})
       //  res.status(200).json("LOGIN")
         console.log("LOGIN")
     }
 });
 
 
-app.post("/app/feeling/:user", (req, res, next) => {
+app.post("/app/feeling/user", (req, res, next) => {
     let data = {
         user: req.body.username,
         pass: new Date()

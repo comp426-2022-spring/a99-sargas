@@ -3,6 +3,11 @@ main {
     padding-top: 0;
 }
 
+div.hidden {
+    display: none;
+  }
+
+
 footer {
     background-color: #fbdbd4;
     display: flex;

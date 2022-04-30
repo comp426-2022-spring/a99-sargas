@@ -13,11 +13,20 @@ async function loginHandler(event) {
         console.log(formData)
         const loginResult = await sendLogin({formData, url})
         console.log(loginResult)
-        document.getElementById("loginStatusCheck").innerHTML=loginResult
+        document.getElementById("loginStatusCheck").innerHTML=loginResult.status
+        document.getElementById("loggedinuser").innerHTML=loginResult.user
   //  }catch(e){
   //      console.error("oof")
   //  }
 }
+//this does not work -- need to find better wait to hyde
+if (document.getElementById("loginStatusCheck").innerHTML==="LOGIN"){
+    document.getElementById("feelingform").setAttribute("class", "featureitem")
+}
+
+const feelingbutton = document.getElementById("feelingform");
+//feelingbutton.addEventListener("submit",feelinginput)
+//need to add function 
 
 
 
