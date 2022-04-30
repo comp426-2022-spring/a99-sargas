@@ -62,23 +62,28 @@ app.get("/app/delete", (req, res)=>{ // NOT READY
 
 app.get('/app/register', (req, res)=>{
     res.statusCode = 200
-    var userName = "dummy" // have to attach this to a form
-    var password = "dumdum" // have to attach this to a form
+    //var userName = req.body.username // have to attach this to a form
+    var userName = "kalsd"
+    var password = "lkads"
+    //var password = req.body.password // have to attach this to a form
     const stmt = db.prepare(`INSERT INTO userinfo (
         username,
         password
     ) VALUES (?, ?)
       `)
     const info = stmt.run(userName , password) // Gotta figure out how to get them
+    console.log("something registered!")
 
     
 })
 
-app.get('/app/login', (req, res) => {
+app.post('/app/login', (req, res) => {
     //Respond w status 200
     var isUserNamePresent = false
-    var user = "dummyk" // have to attach this to a form
-    var password = "dumdum" // have to attach this to a form
+    var user = req.body // have to attach this to a form
+    var password = req.body // have to attach this to a form
+    console.log(user)
+    console.log(password)
     res.statusCode = 200;
     var login = false
     var stmt = db.prepare("SELECT * FROM userinfo").all()
@@ -97,11 +102,14 @@ app.get('/app/login', (req, res) => {
         }
     }else{
         res.status(200).json("Username is not recognized")
+        console.log("Username not recognized")
     }
     if(login){
         res.status(200).json("LOGIN")
+        console.log("LOGIN")
     }else{
         res.status(200).json("Incorrect Password")
+        console.log("Incorrect Password")
     }
 });
 
@@ -131,6 +139,4 @@ app.get("/app/graph/:id", (req, res) => {
 app.use(function(req, res) {
     res.type("text/plain")
     res.status(404).send("Endpoint does not exist")
-  
-
 })
