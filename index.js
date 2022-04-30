@@ -100,20 +100,20 @@ app.post('/app/login', (req, res) => {
         if (stmt[i]["password"] == data.password){
             login = true
         }else{
-            res.status(200).json("incorrectPassword")
+            res.status(200).json({"status":"incorrectPassword"})
          //   res.status(200).json("Incorrect Password")
             console.log("Incorrect Password")
         }
             
         
     }else{
-        res.status(200).json("badUsername")
+        res.status(200).json({"status":"badUsername"})
   //      res.json({"message": "usernameNotRecognized"})
       //  res.status(200).json("Username is not recognized")
         console.log("Username not recognized")
     }
     if(login){
-        res.status(200).json("LOGIN")
+        res.status(200).json({"status":"LOGIN", "user":data.username})
       //  res.status(200).json("LOGIN")
         console.log("LOGIN")
     }
@@ -122,19 +122,20 @@ app.post('/app/login', (req, res) => {
 
 app.post("/app/feeling/user", (req, res, next) => {
     let data = {
-        user: req.body.username,
-        pass: new Date()
+        username: req.body.username,
+        feeling: req.body.feeling,
+        date: new Date()
     }
     //need to get user from  other parts
 
     const stmt = db.prepare('INSERT INTO feelinginfo (username, feeling, date) VALUES (?, ?)')
-    const info = stmt.run(data.user, data.pass)
+    const info = stmt.run(data.username, data.feeling,data.date)
     res.status(200).json(info)
 });
 
-app.get("/app/graph/:id", (req, res) => {
+app.get("/app/graph/", (req, res) => {
     try {
-        const stmt = db.prepare('SELECT * FROM userinfo WHERE id = ?').get(req.params.id);
+        const stmt = db.prepare('SELECT * FROM userinfo WHERE id = ?').get(req.body.id);
         res.status(200).json(stmt)
     } catch (e) {
         console.error(e)

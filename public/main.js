@@ -15,14 +15,16 @@ async function loginHandler(event) {
     console.log(formData)
     const loginResult = await sendingStuff({formData, url})
     console.log(loginResult)
-    if(loginResult == "LOGIN"){
+    if(loginResult.status == "LOGIN"){
+        document.getElementById("OUTUSER").innerHTML = loginResult.user
+        document.getElementById("feelingforlogin").setAttribute("class", "featureitem")
         document.getElementById("loginStatusCheck").innerHTML="Logged in!!! Look below for your entries!"
         endpoint = "app/login"; // replace with name for endpoint grabbing the entries of the person
         url = document.baseURI + endpoint;
         sendingStuff({formData, url})
-    }else if(loginResult == "incorrectPassword"){
+    }else if(loginResult.status == "incorrectPassword"){
         document.getElementById("loginStatusCheck").innerHTML="Wrong password..."
-    }else if(loginResult == "badUsername"){
+    }else if(loginResult.status == "badUsername"){
         document.getElementById("loginStatusCheck").innerHTML="We don't recognize that username... Consider making an account below!"
     }
 
@@ -31,9 +33,7 @@ async function loginHandler(event) {
   //  }
 }
 //this does not work -- need to find better wait to hyde
-if (document.getElementById("loginStatusCheck").innerHTML==="LOGIN"){
-    document.getElementById("feelingform").setAttribute("class", "featureitem")
-}
+
 
 const feelingbutton = document.getElementById("feelingform");
 //feelingbutton.addEventListener("submit",feelinginput)
