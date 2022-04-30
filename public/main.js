@@ -48,9 +48,9 @@ async function registerHandler(event){
    // try{
     const formData = new FormData(formEvent);
   //  console.log(formData)
-    const loginResult = await sendingStuff({formData, url})
+    const registerResult = await sendingStuff({formData, url})
     document.getElementById("registerStatusCheck").innerHTML="You're registered! Go ahead and log in!"
-    console.log(loginResult)
+    console.log(registerResult)
 }
 
 async function sendingStuff({ formData, url}) {
