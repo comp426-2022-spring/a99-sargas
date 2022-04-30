@@ -58,8 +58,7 @@ app.get("/app/delete", (req, res)=>{ // NOT READY
  //   "SELECT * FROM mobile_sales WHERE unit_sale >= ?"
 })
 
-app.get('/app/register', (req, res)=>{
-    res.statusCode = 200
+app.post('/app/register', (req, res)=>{
     //var userName = req.body.username // have to attach this to a form
     let data = {
         user: req.body.username,
@@ -71,10 +70,10 @@ app.get('/app/register', (req, res)=>{
         password
     ) VALUES (?, ?)
       `)
-    const info = stmt.run(data.username , data.password) // Gotta figure out how to get them
+    const info = stmt.run(data.user , data.password) // Gotta figure out how to get them
+    info
+    res.status(200).json("You're Registered!")
     console.log("something registered!")
-
-    
 })
 
 app.post('/app/login', (req, res) => {
