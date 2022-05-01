@@ -136,10 +136,12 @@ app.post("/app/feeling/user", (req, res, next) => {
     res.status(200).json(info)
 });
 
-app.get("/app/graph/", (req, res) => {
+app.get("/app/graph/:username", (req, res) => {
     try {
-        const stmt = db.prepare('SELECT * FROM userinfo WHERE id = ?').get(req.body.id);
-        res.status(200).json(stmt)
+        let date = feeldb.prepare('SELECT date FROM feelinginfo WHERE username = ?').get(req.params.username);
+        console.log(date)
+        console.log(feel)
+        res.status(200).json(date)
     } catch (e) {
         console.error(e)
     }
