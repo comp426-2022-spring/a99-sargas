@@ -89,6 +89,9 @@ async function sendingStuff({ formData, url}) {
     
     
 }
+
+
+
 const feeldata = document.getElementById("databutton")
 // Add event listener for coin button
 			feeldata.addEventListener("click", getData)
@@ -100,7 +103,27 @@ const feeldata = document.getElementById("databutton")
     			  return response.json();
   				})
 				.then(function(result) {
-                    
+                    for(x in result){
+                        result[x][0]= new Date(result[x][0])
+                    }
+                    google.charts.load("current", {packages:["calendar"]});
+                    google.charts.setOnLoadCallback(drawChart);
+                    function drawChart() {
+                        var dataTable = new google.visualization.DataTable();
+                        dataTable.addColumn({ type: 'date', id: 'Date' });
+                        dataTable.addColumn({ type: 'number', id: 'Feeling' });
+                        dataTable.addRows(result);
+                 
+                        var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
+                 
+                        var options = {
+                          title: "Feeling",
+                          height: 350,
+                          
+                        };
+                 
+                        chart.draw(dataTable, options);
+                    }
 
             
 					console.log(result);
