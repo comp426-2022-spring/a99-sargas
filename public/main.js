@@ -119,6 +119,22 @@ const feeldata = document.getElementById("databutton")
                         var options = {
                           title: "Feeling",
                           height: 350,
+                          calendar: {
+                              yearLabel: {
+                                fontName: 'Times-Roman',
+                                color: 'black'
+                              },
+                             monthLabel: {
+                                 fontName: 'Times-Roman',
+                                 color:'black'
+                             }
+                          },
+                            colorAxis: {
+                                minValue: 1,
+                                maxValue:10,
+                                colors: ['white','purple']
+                                
+                            }
                           
                         };
                  
