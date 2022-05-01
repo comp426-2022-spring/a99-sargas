@@ -117,23 +117,27 @@ const feeldata = document.getElementById("databutton")
                         var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
                  
                         var options = {
-                          title: "Feeling",
+                          
                           height: 350,
                           calendar: {
                               yearLabel: {
-                                fontName: 'Times-Roman',
+                                fontName: 'Raleway',
                                 color: 'black'
                               },
                              monthLabel: {
-                                 fontName: 'Times-Roman',
+                                 fontName: 'Raleway',
                                  color:'black'
                              }
                           },
                             colorAxis: {
                                 minValue: 1,
                                 maxValue:10,
-                                colors: ['white','purple']
+                                colors: ['#fbdbd4','#8673c7']
                                 
+                            },
+                            noDataPattern: {
+                                backgroundColor: "#cbeafd",
+                                color: "#cbeafd"
                             }
                           
                         };
