@@ -138,10 +138,25 @@ app.post("/app/feeling/user", (req, res, next) => {
 
 app.get("/app/graph/:username", (req, res) => {
     try {
-        let date = feeldb.prepare('SELECT date FROM feelinginfo WHERE username = ?').get(req.params.username);
-        console.log(date)
+        let dates = []
+        let d = 0
+        let feel = []
+        let f=0
+        const stmt = feeldb.prepare('SELECT * FROM feelinginfo')
+        for (x in stmt){
+            if (stmt[x]["username"] == req.body.username){ // the magical way to access the username... This took me an hour, lol - Albert
+                console.log(stmt[x]["date"])
+                dates[d] = stmt[x]["date"]
+
+                dates[f] = stmt[x]["feel"]
+                d++
+                f++
+            }
+        }
+        
+        console.log(dates)
         console.log(feel)
-        res.status(200).json(date)
+        res.status(200).json(dates)
     } catch (e) {
         console.error(e)
     }

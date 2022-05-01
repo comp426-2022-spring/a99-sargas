@@ -18,6 +18,7 @@ async function loginHandler(event) {
     if(loginResult.status == "LOGIN"){
         document.getElementById("OUTUSER").innerHTML = loginResult.user
         document.getElementById("feelingforlogin").setAttribute("class", "featureitem")
+        document.getElementById("dataDiv").setAttribute("class", "featureitem")
         document.getElementById("loginStatusCheck").innerHTML="Logged in!!! Look below for your entries!"
         endpoint = "app/login"; // replace with name for endpoint grabbing the entries of the person
         url = document.baseURI + endpoint;
@@ -82,4 +83,21 @@ async function sendingStuff({ formData, url}) {
     };
     const response = await fetch(url, options);
     return response.json()
+
+    
+    
 }
+const feeldata = document.getElementById("databutton")
+// Add event listener for coin button
+			feeldata.addEventListener("click", getData)
+			function getData() {
+                const user = document.getElementById("OUTUSER").innerHTML
+                console.log(user)
+                fetch('http://localhost:5555/app/graph/' + user, {mode: 'cors'})
+  				.then(function(response) {
+    			  return response.json();
+  				})
+				.then(function(result) {
+					console.log(result);
+                })
+            }
