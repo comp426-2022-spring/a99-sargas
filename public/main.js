@@ -35,8 +35,21 @@ async function loginHandler(event) {
 //this does not work -- need to find better wait to hyde
 
 
-const feelingbutton = document.getElementById("feelingform");
-//feelingbutton.addEventListener("submit",feelinginput)
+const feelingbutton = document.getElementById("feelingForm");
+feelingbutton.addEventListener("submit", feelingInput)
+
+async function feelingInput(event) {
+    event.preventDefault();
+    var endpoint = "app/feeling/user";
+    var url = document.baseURI + endpoint;
+    const formEvent = event.currentTarget
+    console.log(formEvent)
+    const formData = new FormData(formEvent);
+    formData.append("username", document.getElementById("OUTUSER").innerHTML)
+    console.log(formData)
+    const loginResult = await sendingStuff({formData, url})
+    console.log(loginResult)
+}
 //need to add function 
 
 async function registerHandler(event){

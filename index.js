@@ -122,14 +122,17 @@ app.post('/app/login', (req, res) => {
 
 app.post("/app/feeling/user", (req, res, next) => {
     let data = {
-        username: req.body.username,
         feeling: req.body.feeling,
-        date: new Date()
+        username: req.body.username,
+        date: new Date().toDateString()
     }
     //need to get user from  other parts
-
-    const stmt = db.prepare('INSERT INTO feelinginfo (username, feeling, date) VALUES (?, ?)')
-    const info = stmt.run(data.username, data.feeling,data.date)
+    console.log(data.username)
+    console.log(data.feeling)
+    console.log(data.date)
+    const stmt = feeldb.prepare('INSERT INTO feelinginfo (username, feeling, date) VALUES (?, ?,?)')
+    const info = stmt.run(data.username, data.feeling, data.date)
+  
     res.status(200).json(info)
 });
 
