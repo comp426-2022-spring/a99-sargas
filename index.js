@@ -1,12 +1,10 @@
 const express = require('express')
 const app = express()
-const args = require('minimist')(process.argv.slice(2)) 
+
 const morgan = require('morgan')
 const db = require('./database/user.js')
 const feeldb = require('./database/feeling.js')
-const fs = require('fs')
-const md5 = require('md5')
-const http = require("http")
+
 
 // Serve static HTML files
 app.use(express.static('./public'));

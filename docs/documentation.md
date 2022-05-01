@@ -4,13 +4,11 @@ The purpose of this website is to create a digitized journal to record the emoti
 
 Each page hosts different facets of this website:
 
-[LOGIN] - Allows user to log in to their individual account, where all of their associated data (i.e. login information, journal log entries, email, etc.) can be associated according to each user account.
 
 [RESOURCES] - A page linking to PDFs outlining tutorials how to take care of you or someone else struggling in their mental health. As well as additional links directing you to extra resources to outreach when self help solutions are not as viable.
 
 [INDEX] - Our origin story to how the pandemic affect the general mental health of the population, and how we came choose this path of topic to present our website on. Contains our mission statement and 
 
-[CONTACTUS] - Our different social media pages you can further inquire the developers of this website on any other existent questions.
 
 
 # Mental Health Wellness Website Installation
@@ -18,23 +16,27 @@ Each page hosts different facets of this website:
 This package was buid using Node.js LTS (16.x).
 Other package dependency and version information can be found in `package.json`.
 
-# Mental Health Wellness.net Documentation
+In order to work with this prototype run the following in the command line
 ```
-node server.js [options]
-
---port, -p	Set the port number for the server to listen on. Must be an integer
-            between 1 and 65535. Defaults to 5000.
-
---debug, -d If set to true, creates endlpoints /app/log/access/ which returns
-            a JSON access log from the database and /app/error which throws 
-            an error with the message "Error test successful." Defaults to 
-            false.
-
---log, -l   If set to false, no log files are written. Defaults to true.
-            Logs are always written to database.
-
---help, -h	Return this message and exit.
+npm install
 ```
+for each dependency listed below
+* better-sqlite3 
+    - Databases are made and are accessed through this dependency
+* express
+    - A middleware for running the server
+* cors
+    - Helps allow the API to move through pages
+
+Once dependencies are install run 
+```
+node index.js
+```
+This will run the server on port 5555 and you can access the website on http://localhost:5555/
+
+
+
+
 
 # Mental Health Wellness API Documentation
 
@@ -45,13 +47,13 @@ node server.js [options]
 #### Request cURL
 
 ```
-curl http://localhost:5000/app/
+curl -i http://localhost:5555/app/
 ```
 
 #### Response body
 
 ```
-{"message":"App is running on port (5000)"}
+200 OK
 ```
 
 #### Response headers
@@ -59,12 +61,12 @@ curl http://localhost:5000/app/
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
-Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 30 Apr 2022 15:42:49 GMT
+Access-Control-Allow-Origin: *
+Content-Type: text/plain
+Date: Sun, 01 May 2022 17:17:27 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
+Transfer-Encoding: chunked
 ```
 
 ### /app/moreInfo (GET)
@@ -72,93 +74,13 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
-
+curl -i http://localhost:5555/app/moreInfo
 ```
 
 #### Response body
 
 ```
-
-```
-
-#### Response headers
-
-```
-
-```
-
-### /app/delete (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
-
-```
-
-### /app/register (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
-
-```
-
-### /app/login (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
-
-```
-
-### /app/feeling/:user (POST)
-
-#### Request cURL
-
-```
-curl -X POST -H 'Content-Type: application/json' -d '{"guess":"heads"}' http://localhost:5000/app/flip/call/
-```
-
-#### Response body
-
-```
-{"call":"heads","flip":"heads","result":"win"}
+200 OK
 ```
 
 #### Response headers
@@ -166,26 +88,61 @@ curl -X POST -H 'Content-Type: application/json' -d '{"guess":"heads"}' http://l
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/plain
+Date: Sun, 01 May 2022 17:17:27 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+```
+
+
+### /app/register (GET)
+* Takes in a response body of "username" and "password" 
+* Registers the user into the user database
+* Returns whether registration was successful or not in a string
+
+#### Request cURL
+
+```
+curl -i --data "username=user&password=password" http://localhost:5555/app/register/
+```
+
+#### Response body
+
+```
+"You're Registered!"
+```
+
+#### Response headers
+
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 46
-ETag: W/"2e-U/q8iZ4JKqczXPIvtwiVRpEFlRc"
-Date: Thu, 07 Apr 2022 16:30:07 GMT
+Content-Length: 24
+ETag: W/"28-lVVSu4o/9nrV1H+90IZECR9cPrA"
+Date: Sun, 01 May 2022 17:42:00 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
 
-### /app/graph/:id (POST)
+### /app/login (GET)
+* Like registration takes in a username and a password as a req body
+* Returns a json object of the status of the login
+* Options are {"status":"incorrectPassword"} if password does not match database,{"status":"LOGIN"} if login is successful or {"status":"badUsername} if the username is not present within the database
 
 #### Request cURL
 
 ```
-curl -X POST -H 'Content-Type: application/json' -d '{"number":"30"}' http://localhost:5000/app/flip/coins/`
+curl -i --data "username=user&password=password" http://localhost:5555/app/login
 ```
 
 #### Response body
 
 ```
-{"raw":["heads","heads","heads","tails","heads","heads","tails","tails","tails","heads","heads","heads","heads","heads","heads","tails","tails","heads","heads","heads","heads","heads","heads","heads","tails","heads","tails","heads","tails","heads"],"summary":{"heads":21,"tails":9}}
+"{"status":"LOGIN"}"
 ```
 
 #### Response headers
@@ -193,10 +150,73 @@ curl -X POST -H 'Content-Type: application/json' -d '{"number":"30"}' http://loc
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 283
-ETag: W/"11b-9dPTqGfngSPFEOq4loChIlpdSIE"
-Date: Thu, 07 Apr 2022 15:23:35 GMT
+Content-Length: 24
+ETag: W/"18-lVVSu4o/9nrV1H+90IZECR9cerA"
+Date: Sun, 01 May 2022 17:42:00 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+```
+
+### /app/feeling/user (POST)
+* Only accessable within website when login has occured
+* Takes in username and a feeling number and posts those as well as the current date into a database
+* Returns the a json of changes in the data base and the last id entered
+
+#### Request cURL
+
+```
+curl -i --data "username=user&feeling=8" http://localhost:5555/app/feeling/user
+```
+
+#### Response body
+
+```
+{"changes":1,"lastInsertRowid":33}
+```
+
+#### Response headers
+
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 34
+ETag: W/"22-4i7+CPUVLDfQydzSfY9ng07iqFM"
+Date: Sun, 01 May 2022 17:34:52 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+```
+
+### /app/graph/:username (GET)
+* Uses req.params to retrieve username once logged in.
+* Then retrieves the feeling data {feeling, date} from the sql database
+* While information is being retieved the endpoint puts data into a 2d array with the date in the first column and feeling in the second
+
+#### Request cURL
+
+```
+curl -i http://localhost:5555/app/graph/user
+```
+
+#### Response body
+
+```
+[["2022-05-01",8]]
+```
+
+#### Response headers
+
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 18
+ETag: W/"12-azqjG8VHruhgZHcAlkiKpi48Pqg"
+Date: Sun, 01 May 2022 17:37:50 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
