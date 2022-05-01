@@ -124,7 +124,7 @@ app.post("/app/feeling/user", (req, res, next) => {
     let data = {
         feeling: req.body.feeling,
         username: req.body.username,
-        date: new Date().toDateString()
+        date: new Date().toISOString().split('T')[0]
     }
     //need to get user from  other parts
     console.log(data.username)
@@ -138,25 +138,29 @@ app.post("/app/feeling/user", (req, res, next) => {
 
 app.get("/app/graph/:username", (req, res) => {
     try {
+
+        let all = []
         let dates = []
         let d = 0
         let feel = []
         let f=0
-        const stmt = feeldb.prepare('SELECT * FROM feelinginfo')
+        const stmt = feeldb.prepare('SELECT * FROM feelinginfo').all()
         for (x in stmt){
-            if (stmt[x]["username"] == req.body.username){ // the magical way to access the username... This took me an hour, lol - Albert
+            if (stmt[x]["username"] == req.params.username){ // the magical way to access the username... This took me an hour, lol - Albert
                 console.log(stmt[x]["date"])
                 dates[d] = stmt[x]["date"]
 
-                dates[f] = stmt[x]["feel"]
+                feel[f] = stmt[x]["feeling"]
+                all[d] = [stmt[x]["date"], stmt[x]["feeling"]]
                 d++
                 f++
             }
         }
-        
+        console.log(all)
         console.log(dates)
         console.log(feel)
-        res.status(200).json(dates)
+        res.status(200).json(all)
+        
     } catch (e) {
         console.error(e)
     }

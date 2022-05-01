@@ -1,3 +1,5 @@
+
+
 const loginButton = document.getElementById("loginForm")
 // Add event listener for coins form
 const registerButton = document.getElementById("registerForm")
@@ -98,6 +100,13 @@ const feeldata = document.getElementById("databutton")
     			  return response.json();
   				})
 				.then(function(result) {
+                    
+
+            
 					console.log(result);
+
                 })
+
+               
+                
             }
