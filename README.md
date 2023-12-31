@@ -20,7 +20,7 @@ For first steps go to /docs/documentation to see how to install dependencies as 
 
 
 
-## Team mangement
+## Team management
 
 .
 ## Project Members 
